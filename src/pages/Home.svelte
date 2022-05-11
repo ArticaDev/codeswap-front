@@ -60,9 +60,4 @@
     padding: 1em;
     margin: 0 auto;
   }
-
-  h1 {
-    color: #ff3e00;
-    font-weight: 100;
-  }
 </style>
