@@ -37,9 +37,9 @@
     <Loading text="Loading..." />
   {:then data}
     <UserCode
-      code={data.code}
-      title={data.title}
-      description={data.description}
+      code={fakeCode.code}
+      title={fakeCode.title}
+      description={fakeCode.description}
     />
     <button
       class="p-3 border-2 rounded-md hover:border-orange-500 hover:bg-orange-500 hover:text-white transition-all focus:border-orange-500 text-lg text-orange-500"
