@@ -1,4 +1,4 @@
-import { ghpages } from "gh-pages";
+import ghpages from "gh-pages";
 
 ghpages.publish(
   "public", // path to public directory
