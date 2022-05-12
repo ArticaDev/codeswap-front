@@ -7,9 +7,9 @@ A place for you to share code easily with others via the internet, using a title
 <details open>
 <summary>Screenshots</summary>
 
-![first page](screenshots/1.png)
-![second page](screenshots/3.png)
-![third page](screenshots/2.png)
+![first page](./screenshots/1.png)
+![second page](./screenshots/3.png)
+![third page](./screenshots/2.png)
 </details>
 
 ### Technologies Used:
