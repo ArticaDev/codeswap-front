@@ -21,7 +21,6 @@
 <main class="grid grid-flow-row justify-center gap-5 hover:border-orange-500">
   <Title />
   <div class="w-full grid grid-flow-row gap-5">
-    <pre><code class="text-left">{code}</code></pre>
     <input
       class="outline-none w-full border-b-2 p-1 hover:border-orange-500 focus-within:border-orange-500 bg-transparent text-white  transition-colors"
       placeholder="Title"
@@ -52,7 +51,7 @@
   }
 
   :global(body) {
-    background-color: #222;
+    background-color: #111;
   }
 
   main {
