@@ -3,17 +3,19 @@
   import hljs from "highlight.js";
   import "highlight.js/styles/an-old-hope.css";
 
+  export let title;
+  export let code;
+  export let description;
+
   onMount(() => {
     hljs.highlightAll();
   });
-
-  export let code;
 </script>
 
-<h2 class="text-4xl text-orange-500">{code.title}</h2>
-<pre><code class="text-left">{code.content}</code></pre>
+<h2 class="text-4xl text-orange-500">{title}</h2>
+<pre><code class="text-left">{code}</code></pre>
 <h4 class="text-xl  text-white">
-  {code.description}
+  {description}
 </h4>
 
 <style>

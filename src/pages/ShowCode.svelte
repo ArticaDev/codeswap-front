@@ -11,7 +11,7 @@
 
   const fakeCode = {
     title: "Essa aqui vai pro Marcão",
-    content: `  import UserCode from "../components/UserCode.svelte";
+    code: `  import UserCode from "../components/UserCode.svelte";
   import Title from "../components/Title.svelte";
   import Loading from "../components/Loading.svelte";
   export let id;
@@ -35,8 +35,12 @@
   <Title />
   {#await fetchUserCode}
     <Loading text="Loading..." />
-  {:then code}
-    <UserCode {code} />
+  {:then data}
+    <UserCode
+      code={data.code}
+      title={data.title}
+      description={data.description}
+    />
     <button
       class="p-3 border-2 rounded-md hover:border-orange-500 hover:bg-orange-500 hover:text-white transition-all focus:border-orange-500 text-lg text-orange-500"
       on:click={() => {
