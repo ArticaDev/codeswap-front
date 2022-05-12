@@ -20,6 +20,8 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
+    "appwrite": "^7.0.0",
+    "gh-pages": "^4.0.0",
     "highlight.js": "^11.5.1",
     "svelte-icons": "^2.1.0"
   }
