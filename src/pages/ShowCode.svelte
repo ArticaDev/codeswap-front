@@ -5,19 +5,17 @@
   import Title from "../components/Title.svelte";
   import Loading from "../components/Loading.svelte";
   export let id;
-
   let sdk = {};
   onMount(() => {
     sdk = new Appwrite();
-    sdk.setEndpoint("http://137.184.150.182/v1").setProject("code-swap");
+    sdk.setEndpoint("http://137.184.150.182:8080/v1").setProject("code-swap");
   });
-
   const fetchUserCode = (async () => {
-    let promise = sdk.functions.createExecution("get-snippet", id);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    let promise = sdk.database.getDocument('snippets', id);
     const response = await promise;
-    return await JSON.parse(response);
+    return response;
   })();
-
   const copyUrlPage = () => {
     navigator.clipboard.writeText(window.location.href);
   };

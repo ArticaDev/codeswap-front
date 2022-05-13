@@ -10,7 +10,7 @@
   let sdk;
   onMount(() => {
     sdk = new Appwrite();
-    sdk.setEndpoint("http://137.184.150.182/v1").setProject("code-swap");
+    sdk.setEndpoint("http://137.184.150.182:8080/v1").setProject("code-swap");
   });
 
   const sendCode = async () => {
@@ -28,10 +28,10 @@
       })
     );
 
-    let response = await promise;
-    console.log(response);
-    const data = JSON.parse(response);
-    router.goto("/code/" + data.id);
+    let execution = await promise;
+    let result = await sdk.functions.getExecution("save-snippet", `${execution.$id}`);
+    const identifier = JSON.parse(result.stdout).id;
+    router.goto("/code/" + identifier);
   };
 </script>
 
