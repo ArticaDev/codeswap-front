@@ -1,21 +1,38 @@
 <script>
   import { router } from "tinro";
+  import { Appwrite } from "appwrite";
+  import { onMount } from "svelte";
   import Title from "../components/Title.svelte";
   let code = "";
   let title = "";
   let description = "";
 
-  async function sendCode() {
-    const res = await fetch("https://httpbin.org/post", {
-      method: "POST",
-      body: JSON.stringify({
+  let sdk;
+  onMount(() => {
+    sdk = new Appwrite();
+    sdk.setEndpoint("http://137.184.150.182/v1").setProject("code-swap");
+  });
+
+  const sendCode = async () => {
+    try {
+      await sdk.account.createAnonymousSession();
+    } catch (error) {
+      console.log(error);
+    }
+    let promise = sdk.functions.createExecution(
+      "save-snippet",
+      JSON.stringify({
         code,
         title,
         description,
-      }),
-    });
-    res.json().then((url) => router.goto(url));
-  }
+      })
+    );
+
+    let response = await promise;
+    console.log(response);
+    const data = JSON.parse(response);
+    router.goto("/code/" + data.id);
+  };
 </script>
 
 <main class="grid grid-flow-row justify-center gap-5 hover:border-orange-500">
