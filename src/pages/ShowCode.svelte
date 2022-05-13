@@ -1,6 +1,7 @@
 <script>
   import { Appwrite } from "appwrite";
   import { onMount } from "svelte";
+  import { copyToClipboard } from "../utils.js";
   import UserCode from "../components/UserCode.svelte";
   import Title from "../components/Title.svelte";
   import Loading from "../components/Loading.svelte";
@@ -15,8 +16,9 @@
     response = await sdk.database.getDocument("snippets", id);
     return response;
   });
+
   const copyUrlPage = () => {
-    navigator.clipboard.writeText(window.location.href);
+    copyToClipboard(window.location.href);
     copied = true;
   };
 </script>

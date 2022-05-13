@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { copyToClipboard } from "../utils.js";
   import FaRegCopy from "svelte-icons/fa/FaRegCopy.svelte";
   import FaCheckDouble from "svelte-icons/fa/FaCheckDouble.svelte";
   import hljs from "highlight.js/lib/common";
@@ -12,7 +13,7 @@
   let copied = false;
 
   const copyCode = () => {
-    navigator.clipboard.writeText(code);
+    copyToClipboard(code);
     copied = true;
   };
 
@@ -24,22 +25,20 @@
 <h2 class="text-4xl text-orange-500">{title}</h2>
 <div class="border-orange-500 border-2">
   <pre><code class="text-left">{code}</code></pre>
-  {#if window.isSecureContext}
-    <button
-      on:click={() => copyCode()}
-      class="p-2 border-orange-500 border-2 rounded flex justify-center items-center m-2 ml-auto"
-    >
-      {#if copied}
-        <div class="text-green-500 w-4 h-4">
-          <FaCheckDouble />
-        </div>
-      {:else}
-        <div class="text-orange-500 w-4 h-4">
-          <FaRegCopy />
-        </div>
-      {/if}
-    </button>
-  {/if}
+  <button
+    on:click={() => copyCode()}
+    class="p-2 border-orange-500 border-2 rounded flex justify-center items-center m-2 ml-auto"
+  >
+    {#if copied}
+      <div class="text-green-500 w-4 h-4">
+        <FaCheckDouble />
+      </div>
+    {:else}
+      <div class="text-orange-500 w-4 h-4">
+        <FaRegCopy />
+      </div>
+    {/if}
+  </button>
 </div>
 <h4 class="text-xl  text-white">
   {description}
