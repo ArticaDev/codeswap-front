@@ -16,5 +16,6 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /home/codeswap-front
+            git pull origin master
             yarn install
             yarn build
