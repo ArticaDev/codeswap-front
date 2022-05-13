@@ -15,6 +15,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd cd /home/codeswap-front
+            cd /home/codeswap-front
             yarn install
             yarn build
