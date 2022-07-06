@@ -1,36 +1,21 @@
 <script>
   import { router } from "tinro";
-  import { Appwrite } from "appwrite";
-  import { onMount } from "svelte";
   import Title from "../components/Title.svelte";
   let code = "";
   let title = "";
   let description = "";
 
-  let sdk;
-  onMount(() => {
-    sdk = new Appwrite();
-    sdk.setEndpoint("http://137.184.150.182:8080/v1").setProject("code-swap");
-  });
-
   const sendCode = async () => {
-    try {
-      await sdk.account.createAnonymousSession();
-    } catch (error) {
-      console.log(error);
-    }
-    let promise = sdk.functions.createExecution(
-      "save-snippet",
-      JSON.stringify({
+		const response = await fetch('https://apicodeswap.tk', {
+			method: 'POST',
+			body: JSON.stringify({
         code,
         title,
         description,
       })
-    );
+		})
 
-    let execution = await promise;
-    let result = await sdk.functions.getExecution("save-snippet", `${execution.$id}`);
-    const identifier = JSON.parse(result.stdout).id;
+    const identifier = await response.json();
     router.goto("/code/" + identifier);
   };
 </script>
