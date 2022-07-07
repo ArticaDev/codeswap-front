@@ -16,7 +16,7 @@
 		})
 
     const identifier = await response.json();
-    router.goto("/code/" + identifier);
+    router.goto("/code/" + identifier.id);
   };
 </script>
 
