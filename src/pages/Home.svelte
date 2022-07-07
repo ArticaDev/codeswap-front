@@ -12,9 +12,11 @@
         code,
         title,
         description,
-      })
+      }),
+      headers: {
+        "content-type": "application/json"
+      }
 		})
-
     const identifier = await response.json();
     router.goto("/code/" + identifier.id);
   };
