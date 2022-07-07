@@ -5,13 +5,12 @@
   import Title from "../components/Title.svelte";
   import Loading from "../components/Loading.svelte";
   export let id;
-  let snippet;
+  let snippet = null;
   let copied = false;
 
   onMount(async () => {
-    const response = await fetch('https://apicodeswap.tk');
-    const snippet = await response.json();
-    return snippet;
+    const response = await fetch(`https://apicodeswap.tk/${id}`);
+    snippet = await response.json();
   });
 
   const copyUrlPage = () => {
@@ -24,7 +23,7 @@
   class="grid grid-flow-row justify-center gap-5 hover:border-orange-500 w-96 mx-auto"
 >
   <Title />
-  {#if snippet === undefined}
+  {#if !snippet}
     <Loading text="Loading..." />
   {:else}
     <UserCode
