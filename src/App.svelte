@@ -5,6 +5,14 @@
   import ShowCode from "./pages/ShowCode.svelte";
 </script>
 
+<svelte:head>
+  <script
+    async
+    defer
+    data-website-id="0936b575-7f94-4f4e-bb4e-6c78133bd796"
+    src="https://analytics.articadev.com/umami.js"></script>
+</svelte:head>
+
 <main>
   <Route path="/">
     <Home />
