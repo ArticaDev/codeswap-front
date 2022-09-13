@@ -9,7 +9,7 @@
   <script
     async
     defer
-    data-website-id="0936b575-7f94-4f4e-bb4e-6c78133bd796"
+    data-website-id="0757d8d0-7922-4345-978d-89cf9ec79aa5"
     src="https://analytics.articadev.com/umami.js"></script>
 </svelte:head>
 
